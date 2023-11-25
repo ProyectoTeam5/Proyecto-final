@@ -1,4 +1,4 @@
-package com.example.tukiservicios.tukiservicios.controller;
+package com.example.tukiservicios.tukiservicios.repositories;
 
 
 import jakarta.transaction.Transactional;
