@@ -3,6 +3,7 @@ package com.example.tukiservicios.tukiservicios.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
@@ -10,29 +11,27 @@ import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
 import java.util.List;
 
 
-@Repository
-@Transactional
+
 public class SupplierDAO {
 
-    @PersistenceContext
-    EntityManager em;
+    @Autowired
+    SupplierRepository supplierJ;
 
 
     public List<SupplierEntity> getAllSuppliers(){
-        String query = "FROM SupplierEntity";
-        return em.createQuery(query).getResultList();
+        return  supplierJ.findAll();
     }
 
     public SupplierEntity getSupplierById(Integer id){
-        return em.find(SupplierEntity.class,id);
+        return supplierJ.getReferenceById(id);
     }
 
     public void createSupplier(SupplierEntity supplier){
-        em.persist(supplier);
+        supplierJ.save(supplier);
     }
 
     public void deleteSupplier(Integer id){
-        em.remove(em.find(SupplierEntity.class,id));
+        supplierJ.delete(supplierJ.findById(id).orElse(null));
     }
 
     public void modifySupplier(SupplierEntity supplier){
@@ -49,7 +48,7 @@ public class SupplierDAO {
         //supplier.setIdService(supplier.getIdService());
         supplier.setProfession(supplier.getProfession());
 
-        em.merge(supplier);
+       supplierJ.save(supplier);
 
     }
 }
