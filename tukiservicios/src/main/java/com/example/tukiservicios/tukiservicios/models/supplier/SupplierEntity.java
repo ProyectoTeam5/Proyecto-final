@@ -2,6 +2,8 @@ package com.example.tukiservicios.tukiservicios.models.supplier;
 
 import java.util.Set;
 
+import com.example.tukiservicios.tukiservicios.models.user.UserEntity;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
