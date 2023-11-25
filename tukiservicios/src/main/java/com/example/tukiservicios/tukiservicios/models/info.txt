@@ -1,1 +1,5 @@
-Aca van las clases entity
+Camila saucedo :
+    modifique las clases se supplier y agregue las necesarias para la conccion a la base de datos creo que esta bien, si no hay que corregir de nuevo
+    agregue dos carpetas, una de supplier y una de user asi ponemos las clases de cada uno ahi y queda mas ordenado
+
+    van a saltarle errores, son por que aun hay que cargar la clase UserEntity y terminar de hacer las conecciones
