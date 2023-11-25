@@ -2,6 +2,8 @@ package com.example.tukiservicios.tukiservicios.models;
 
 import java.util.Set;
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
+import com.example.tukiservicios.tukiservicios.models.user.UserEntity;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
