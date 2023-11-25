@@ -3,6 +3,8 @@ package com.example.tukiservicios.tukiservicios.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
@@ -10,29 +12,31 @@ import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
 import java.util.List;
 
 
-@Repository
-@Transactional
+@Slf4j
 public class SupplierDAO {
 
-    @PersistenceContext
-    EntityManager em;
+    @Autowired
+    SupplierRepository supplierJ;
 
 
     public List<SupplierEntity> getAllSuppliers(){
-        String query = "FROM SupplierEntity";
-        return em.createQuery(query).getResultList();
+        log.info("Información de todos los usuarios procesada...");
+        return  supplierJ.findAll();
     }
 
     public SupplierEntity getSupplierById(Integer id){
-        return em.find(SupplierEntity.class,id);
+        log.info("Información del usuario procesada...");
+        return supplierJ.findById(id).orElse(null);
     }
 
     public void createSupplier(SupplierEntity supplier){
-        em.persist(supplier);
+        supplierJ.save(supplier);
+        log.info("Creación del usuario procesada...");
     }
 
     public void deleteSupplier(Integer id){
-        em.remove(em.find(SupplierEntity.class,id));
+        supplierJ.delete(supplierJ.findById(id).orElse(null));
+        log.info("Eliminación del usuario procesada...");
     }
 
     public void modifySupplier(SupplierEntity supplier){
@@ -49,7 +53,9 @@ public class SupplierDAO {
         //supplier.setIdService(supplier.getIdService());
         supplier.setProfession(supplier.getProfession());
 
-        em.merge(supplier);
+       supplierJ.save(supplier);
+
+        log.info("Modificación del usuario procesada...");
 
     }
 }
