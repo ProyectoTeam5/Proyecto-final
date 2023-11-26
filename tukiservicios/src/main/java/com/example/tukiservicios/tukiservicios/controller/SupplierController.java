@@ -4,6 +4,7 @@ package com.example.tukiservicios.tukiservicios.controller;
 import com.example.tukiservicios.tukiservicios.dto.SupplierDTO;
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
 import com.example.tukiservicios.tukiservicios.repositories.SupplierDAO;
+import com.example.tukiservicios.tukiservicios.repositories.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/supplier")
@@ -23,6 +25,9 @@ public class SupplierController {
 
     @Autowired
     SupplierDAO supplierDAO;
+
+    @Autowired
+    SupplierRepository supplierRepository;
 
     @GetMapping
     public ResponseEntity<List<SupplierEntity>> getAllSupplier(){
@@ -63,10 +68,29 @@ public class SupplierController {
         }
     }
 
-  /* @PutMapping("/{id}")
-    public ResponseEntity<SupplierEntity> modifySupplier(@PathVariable Long id, @RequestBody SupplierEntity supplier){
+  @PutMapping("/{id}")
+    public ResponseEntity<SupplierEntity> modifySupplier(@PathVariable("id") Long id, @RequestBody SupplierEntity supplier){
+      SupplierEntity supplierEntity = supplierDAO.getSupplierById(id);
 
-    }*/
+      if(supplierEntity == null){
+          return ResponseEntity.notFound().build();
+      }else{
+          supplier.setId(supplierEntity.getId());
+          supplierDAO.modifySupplier(supplierEntity);
+          return ResponseEntity.ok(supplier);
+      }
+
+    }
+
+
+
+
+    @GetMapping("/user/{name}")
+    public ResponseEntity<?> getByName(@PathVariable("name") String name){
+       SupplierEntity supp= supplierDAO.getSupplierByName(name);
+        return ResponseEntity.ok(supp);
+    }
+
 
     @PostMapping("/")
     public String saveIMG(@RequestParam(name="file", required = false) MultipartFile photo, SupplierDTO supplier,
