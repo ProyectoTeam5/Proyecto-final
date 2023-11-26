@@ -3,12 +3,15 @@ package com.example.tukiservicios.tukiservicios.repositories;
 import com.example.tukiservicios.tukiservicios.dto.SupplierDTO;
 import com.example.tukiservicios.tukiservicios.models.supplier.ProfessionEnum;
 import com.example.tukiservicios.tukiservicios.models.supplier.Service;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,9 @@ public class SupplierDAO {
 
     @Autowired
     SupplierRepository supplierJ;
+
+    @PersistenceContext
+    EntityManager em;
 
 
     public List<SupplierEntity> getAllSuppliers(){
@@ -66,7 +72,7 @@ public class SupplierDAO {
         supplier.setPassword(supplier.getPassword());
         supplier.setResume(supplier.getResume());
         supplier.setContactNumber(supplier.getContactNumber());
-        //supplier.setWorkStatus(supplier.getWorkStatus());
+        supplier.setWorkStatus(supplier.getWorkStatus());
         //supplier.setIdUser(supplier.getIdUser());
         //supplier.setIdService(supplier.getIdService());
         //supplier.setProfession(supplier.getProfession());
@@ -76,4 +82,18 @@ public class SupplierDAO {
         log.info("Modificación del proveedor procesada...");
 
     }
+
+
+    public SupplierEntity getSupplierByName(String supplierName){
+    log.info("Información del proveedor procesada...");
+
+
+    String query = "FROM SupplierEntity WHERE supplierName=:supplierName";
+    return (SupplierEntity) em.createQuery(query).setParameter("supplierName",supplierName).getSingleResult();
+    }
+
+
+
+
+
 }
