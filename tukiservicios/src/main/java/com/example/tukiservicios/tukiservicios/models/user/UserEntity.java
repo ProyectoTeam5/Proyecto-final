@@ -28,12 +28,12 @@ public class UserEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date_service;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = AddressEnum.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "address_id"))
-    private Set<AddressEnum> address;
+/*@OneToOne(fetch = FetchType.EAGER, targetEntity = AddressEnum.class, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "address_id"))*/
+    private Set<String> address;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = AddressEnum.class, cascade = CascadeType.PERSIST)
+   /* @OneToMany(fetch = FetchType.EAGER, targetEntity = AddressEnum.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_supplier", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
-    private Set<SupplierEntity> supplier_id;
+    */private Set<String> supplier_id;
 
 }
