@@ -32,10 +32,10 @@ public class AdminEntity {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = UserEntity.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
+    @JoinTable(name = "user_admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
     private Set<UserEntity> users;
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = SupplierEntity.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
+    @JoinTable(name = "supplier_admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
     private Set<SupplierEntity> suppliers;
 }
