@@ -5,19 +5,20 @@ import com.example.tukiservicios.tukiservicios.models.supplier.ProfessionEnum;
 import com.example.tukiservicios.tukiservicios.models.supplier.Service;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.Valid;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
-
+import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 
 @Slf4j
-@org.springframework.stereotype.Service
+@Repository
+@Transactional
+
 public class SupplierDAO {
 
     @Autowired
@@ -37,13 +38,11 @@ public class SupplierDAO {
         return supplierJ.findById(id).orElse(null);
     }
 
-    public void createSupplier(@Valid SupplierDTO supplierDTO){
+    public void createSupplier(SupplierDTO supplierDTO){
         Set<Service> Professions = supplierDTO.getProfession().stream()
                 .map(r -> Service.builder()
                         .profession(ProfessionEnum.valueOf(r)).build())
                 .collect(Collectors.toSet());
-
-
 
         SupplierEntity supplierEntity = SupplierEntity.builder()
                 .supplierName(supplierDTO.getSupplierName())
@@ -62,25 +61,6 @@ public class SupplierDAO {
     public void deleteSupplier(Long id){
         supplierJ.delete(supplierJ.findById(id).orElse(null));
         log.info("Eliminación del proveedor procesada...");
-    }
-
-    public void modifySupplier(SupplierEntity supplier){
-
-        supplier.setSupplierName(supplier.getSupplierName());
-        supplier.setFoto(supplier.getFoto());
-        supplier.setEmail(supplier.getEmail());
-        supplier.setPassword(supplier.getPassword());
-        supplier.setResume(supplier.getResume());
-        supplier.setContactNumber(supplier.getContactNumber());
-        supplier.setWorkStatus(supplier.getWorkStatus());
-        //supplier.setIdUser(supplier.getIdUser());
-        //supplier.setIdService(supplier.getIdService());
-        //supplier.setProfession(supplier.getProfession());
-
-       supplierJ.save(supplier);
-
-        log.info("Modificación del proveedor procesada...");
-
     }
 
 

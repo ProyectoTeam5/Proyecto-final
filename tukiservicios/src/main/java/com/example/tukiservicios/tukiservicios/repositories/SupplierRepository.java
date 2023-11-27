@@ -13,10 +13,7 @@ import com.example.tukiservicios.tukiservicios.models.supplier.SupplierEntity;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface SupplierRepository extends CrudRepository<SupplierEntity,Long> {
 
-    //@Query("SELECT N FROM SupplierEntity N WHERE N.supplierName =: supplierName")
-    //SupplierEntity findClienteByAlias(/*@Param("supplierName")*/String supplierName);
+public interface SupplierRepository extends CrudRepository<SupplierEntity,Long> {
 
 }

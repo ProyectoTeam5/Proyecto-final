@@ -4,7 +4,6 @@ import java.util.Set;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -25,25 +24,20 @@ public class SupplierEntity {
     @Column(name="supplier_name")
     private String supplierName;
 
-    @NotNull
-    private String foto;
 
+    private String foto;
     @NotNull
     @Email
     @Size(max = 80)
     private String email;
-
     @NotNull
     private String password;
-
     @NotNull
     private String resume;
-
 
     @NotNull
     @Column(name = "contact_number")
     private String contactNumber;
-
     @NotNull
     @Column(name = "work_status")
     private String workStatus;
