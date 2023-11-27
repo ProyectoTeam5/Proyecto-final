@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="Style/style.css">
+    <title>Login del proveedor</title>
+</head>
+
+<body>
+
+    <div class="container-fluid m-5 contenedor">
+
+        <form class="form needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+
+            <div class="form-group my-3">
+                <h3 class="card-title">Login.</h3>
+            </div>
+
+            <div class="form-group my-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" id="loginEmail" placeholder="EMAIL" required>
+                <div class="invalid-feedback">Introduzce una direccion de correo valida.</div>
+            </div>
+
+            <div class="form-group my-3">
+                <label for="password">Contraseña:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" name="password" id="loginPassword"
+                        placeholder="CONTRASEÑA" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <input type="checkbox" onclick="showPassword('loginPassword')"> Mostrar
+                        </span>
+                    </div>
+                    <div class="invalid-feedback">Introduce la contraseña correcta.</div>
+                </div>
+            </div>
+
+            <div id="loginErrorMessage" class="text-danger"></div>
+
+            <button type="submit" class="btn btn-primary mx-auto btn-login">Login</button>
+        </form>
+
+    </div>
+
+    <script>
+        function showPassword(passwordId) {
+            var passwordInput = document.getElementById(passwordId);
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+
+        // Validación del formulario utilizando Bootstrap
+        (function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+    </script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

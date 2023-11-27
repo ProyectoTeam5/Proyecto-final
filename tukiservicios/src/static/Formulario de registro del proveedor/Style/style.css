@@ -1,0 +1,109 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    margin: 0;
+}
+
+.contenedor {
+    max-width: 50%;
+    background-color: #afc5d5;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgba(100, 50, 60, 0.1); /* Reduce el tamaño del box-shadow */
+    margin: 1px; /* Ajusta el margen horizontal */
+    border: 1px solid #ced4da; /* Ajusta el ancho del borde */
+}
+
+.form {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+.card-title {
+    text-align: center;
+    font-size: 24px;
+    color: #3f3a3a;
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 15px;
+}
+
+.btn-register {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    padding: 12px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#imagePreview {
+    max-width: 100%;
+    position: relative;
+}
+
+#imagePreview img {
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#documentPreview {
+    max-width: 100%;
+    position: relative;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+}
+
+.btn-login {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    padding: 12px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el hover del botón de registro */
+.btn-register:hover {
+    background-color: #2c2cd1;
+}
+
+/* Estilo para checkboxes en línea */
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Espaciado entre los checkboxes */
+}
+

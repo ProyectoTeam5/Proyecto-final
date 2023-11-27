@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="Style/style.css">
+    <title>Register Supplier</title>
+</head>
+
+<body>
+
+    <div class="container-fluid m-5 contenedor" style="max-width: 80%;">
+
+        <form class="form needs-validation text-left" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()" novalidate
+            style="width: 60%; margin: 0 auto;">
+
+            <div class="form-group my-3">
+                <h3 class="card-title text-center">Registrate.</h3>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="name">Nombre:</label>
+                    <input type="text" class="form-control" name="name" placeholder="NOMBRE" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="telephonenumber">Número de telefono:</label>
+                    <input type="text" class="form-control" name="telephonenumber" placeholder="NÚMERO DE TELEFONO"
+                        required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="dob">Fecha de Nacimiento:</label>
+                    <input type="date" class="form-control" name="dob" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="profileImage">Imagen de Perfil:</label>
+                    <input type="file" class="form-control-file" name="profileImage" accept="image/*" onchange="showImagePreview(this)">
+                    <small class="form-text text-muted">Selecciona una imagen de perfil.</small>
+                    <div id="imagePreview" class="mt-2"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" name="email" placeholder="EMAIL" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" class="form-control" name="username" placeholder="NOMBRE DE USUARIO" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Servicio:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Plomero" name="service[]"> Plomero
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Gasista" name="service[]"> Gasista
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Electricista" name="service[]"> Electricista
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="availability">Disponibilidad horaria:</label>
+                    <select class="form-control" name="availability">
+                        <option value="00-07">de 00:00am a 7:00am</option>
+                        <option value="07-12">de 7:00am a 12:00pm</option>
+                        <option value="12-18">de 12:00pm a 18:00pm</option>
+                        <option value="24">Disponible las 24hrs del día</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="conductDocument">Documento:</label>
+                    <input type="file" class="form-control-file" name="conductDocument" accept=".pdf, .doc, .docx" onchange="showDocumentPreview(this)">
+                    <small class="form-text text-muted">Selecciona un documento (PDF, Word).</small>
+                    <div id="documentPreview" class="mt-2"></div>
+                </div>
+            </div>  
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password">Contraseña:</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="CONTRASEÑA" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <input type="checkbox" onclick="showPassword()"> Mostrar
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password2">Repetir contraseña:</label>
+                    <input type="password" class="form-control" name="password2" id="password2"
+                        placeholder="REPETIR CONTRASEÑA" required>
+                    <div id="password-error" class="text-danger"></div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary mx-auto btn-register"
+                onclick="validateAndRedirect()">Registrar </button>
+        </form>
+
+    </div>
+
+    <script>
+        function validateAndRedirect() {
+            if (validateForm()) {
+                window.location.href = "login2.html";
+            }
+        }
+
+        function validateForm() {
+            var name = document.getElementsByName("name")[0].value;
+            var telephonenumber = document.getElementsByName("telephonenumber")[0].value;
+            var username = document.getElementsByName("username")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var dob = document.getElementsByName("dob")[0].value;
+            var password = document.getElementById("password").value;
+            var password2 = document.getElementById("password2").value;
+            var errorDiv = document.getElementById("password-error");
+
+            // Validación adicional de los nuevos campos (puedes agregar más según sea necesario)
+            var services = document.querySelectorAll('input[name="service[]"]:checked');
+            var availability = document.getElementsByName("availability")[0].value;
+
+            if (name === "" || telephonenumber === "" || username === "" || email === "" || dob === "" || password === "" || password2 === "" || services.length === 0 || availability === "") {
+                errorDiv.innerHTML = "Por favor, llena todos los campos.";
+                return false; // Prevent form submission
+            } else if (password !== password2) {
+                errorDiv.innerHTML = "¡Las contraseñas no coinciden!";
+                return false; // Prevent form submission
+            } else {
+                errorDiv.innerHTML = ""; // Clear previous error message
+                return true; // Allow form submission
+            }
+        }
+
+        function showPassword() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+
+        function showImagePreview(input) {
+        var previewContainer = document.getElementById('imagePreview');
+        var file = input.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var imgElement = document.createElement('img');
+                imgElement.setAttribute('src', e.target.result);
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(imgElement);
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.innerHTML = ''; // Limpiar contenido
+        }
+    }
+
+    function showDocumentPreview(input) {
+        var previewContainer = document.getElementById('documentPreview');
+        var file = input.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var documentElement = document.createElement('p');
+                documentElement.innerText = 'Documento cargado: ' + file.name;
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(documentElement);
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            previewContainer.innerHTML = ''; // Limpiar contenido
+        }
+    }
+    </script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+Or"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
