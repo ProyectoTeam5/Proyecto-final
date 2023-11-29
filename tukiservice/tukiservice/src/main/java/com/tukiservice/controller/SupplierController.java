@@ -7,8 +7,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tukiservice.DTO.SupplierDTO;
 import com.tukiservice.models.supplier.SupplierEntity;
-import com.tukiservice.repositories.SupplierDAO;
-import com.tukiservice.repositories.SupplierRepository;
+import com.tukiservice.repositories.supplier.SupplierDAO;
+import com.tukiservice.repositories.supplier.SupplierRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -91,7 +91,7 @@ public class SupplierController {
 
 
 
-    @GetMapping("/user/{name}")
+    @GetMapping("/supplier/{name}")
     public ResponseEntity<?> getByName(@PathVariable("name") String name){
         SupplierEntity supp= supplierDAO.getSupplierByName(name);
         return ResponseEntity.ok(supp);
