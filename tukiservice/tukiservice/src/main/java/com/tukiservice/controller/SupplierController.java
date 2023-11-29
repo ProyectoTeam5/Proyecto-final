@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/supplier")
+@CrossOrigin(origins = "*")
 public class SupplierController {
 
     @Autowired
