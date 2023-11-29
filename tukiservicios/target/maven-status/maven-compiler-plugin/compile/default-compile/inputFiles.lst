@@ -1,0 +1,13 @@
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/user/UserEntity.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/user/AddressEnum.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/TukiserviciosApplication.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/MvcConfig.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/supplier/Service.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/supplier/ProfessionEnum.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/repositories/SupplierRepository.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/dto/SupplierDTO.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/AdminEntity.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/repositories/SupplierDAO.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/repositories/ServiceRepository.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/models/supplier/SupplierEntity.java
+/Users/user/Desktop/GItEgg/Proyecto-final/tukiservicios/src/main/java/com/example/tukiservicios/tukiservicios/controller/SupplierController.java
