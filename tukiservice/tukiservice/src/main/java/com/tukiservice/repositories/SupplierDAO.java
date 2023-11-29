@@ -84,8 +84,8 @@ public class SupplierDAO {
     log.info("Información del proveedor procesada...");
 
 
-    String query = "FROM SupplierEntity WHERE supplierName=:supplierName";
-    return (SupplierEntity) em.createQuery(query).setParameter("supplierName",supplierName).getSingleResult();
+        String query = "FROM SupplierEntity WHERE supplierName=:supplierName";
+        return (SupplierEntity) em.createQuery(query).setParameter("supplierName",supplierName).getSingleResult();
     }
 
 
