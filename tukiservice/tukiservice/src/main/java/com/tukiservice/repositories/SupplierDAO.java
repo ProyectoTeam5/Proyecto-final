@@ -47,9 +47,7 @@ public class SupplierDAO {
                 .contactNumber(supplierDTO.getContactNumber())
                 .foto(supplierDTO.getFoto())
                 .password(supplierDTO.getPassword())
-                .workStatus(supplierDTO.getWorkStatus())
                 .resume(supplierDTO.getResume())
-                .profession(Professions)
                 .build();
 
         supplierJ.save(supplierEntity);
@@ -68,7 +66,6 @@ public class SupplierDAO {
         supplier.setPassword(supplier.getPassword());
         supplier.setResume(supplier.getResume());
         supplier.setContactNumber(supplier.getContactNumber());
-        supplier.setWorkStatus(supplier.getWorkStatus());
         //supplier.setIdUser(supplier.getIdUser());
         //supplier.setIdService(supplier.getIdService());
         //supplier.setProfession(supplier.getProfession());
