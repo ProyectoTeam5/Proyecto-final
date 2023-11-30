@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
+    >>>>>>>  Updated upstream
     <list default="true" id="b5050272-3fbf-4139-ad70-df382ee707e5" name="Changes" comment="" />
 =======
     <list default="true" id="b5050272-3fbf-4139-ad70-df382ee707e5" name="Changes" comment="">
@@ -43,7 +43,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
+  >>>>>>> Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
