@@ -56,11 +56,11 @@ public class UserEntityDAO {
         return userER.findById(id).orElse(null);
     }
 
-    public UserEntity getUserByName(String username){
+    public UserEntity getUserByName(String name){
 
         log.info("Información del usuario procesada...");
-        String query = "FROM UserEntity WHERE username=:username";
-        return (UserEntity) em.createQuery(query).setParameter("username",username).getSingleResult();
+        String query = "FROM UserEntity WHERE name=:name";
+        return (UserEntity) em.createQuery(query).setParameter("name",name).getSingleResult();
     }
 
     public void modifyUsers(UserEntity userentity) {

@@ -85,6 +85,7 @@ public class UserEntityController {
 
         userRepo.save(userEntity);
         return ResponseEntity.ok(userEntity);
+    
     }
 
 
