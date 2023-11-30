@@ -1,8 +1,9 @@
-package com.tukiservice.repositories;
+package com.tukiservice.repositories.supplier;
 import com.tukiservice.DTO.SupplierDTO;
 import com.tukiservice.models.supplier.ProfessionEnum;
 import com.tukiservice.models.supplier.Service;
 import com.tukiservice.models.supplier.SupplierEntity;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.validation.Valid;
@@ -79,17 +80,10 @@ public class SupplierDAO {
 
     }
 
-
     public SupplierEntity getSupplierByName(String supplierName){
     log.info("Información del proveedor procesada...");
-
 
         String query = "FROM SupplierEntity WHERE supplierName=:supplierName";
         return (SupplierEntity) em.createQuery(query).setParameter("supplierName",supplierName).getSingleResult();
     }
-
-
-
-
-
 }
