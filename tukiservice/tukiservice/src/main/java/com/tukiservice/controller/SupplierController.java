@@ -50,7 +50,7 @@ public class SupplierController {
         }
     }
 
-    @PostMapping
+    @PostMapping ("/auth")
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDTO supplier){
         supplierDAO.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
@@ -111,7 +111,8 @@ public class SupplierController {
                 supplier.setFoto(photo.getOriginalFilename());
                 supplier.setFoto(Objects.requireNonNull(photo.getOriginalFilename()));
 
-            }catch (IOException e) {
+            }
+            catch (IOException e) {
                 throw new RuntimeException(e);
             }
             supplierDAO.createSupplier(supplier);
@@ -120,4 +121,7 @@ public class SupplierController {
         }
         return "redirect:/";
     }
+
+
+
 }
