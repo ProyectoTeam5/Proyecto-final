@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/supplier")
+@CrossOrigin(origins = "*")
 public class SupplierController {
 
     @Autowired
@@ -66,17 +67,24 @@ public class SupplierController {
         }
     }
 
-  @PutMapping("/{id}")
-    public ResponseEntity<SupplierEntity> modifySupplier(@PathVariable("id") Long id, @RequestBody SupplierEntity supplier){
-      SupplierEntity supplierEntity = supplierDAO.getSupplierById(id);
+    @PutMapping("/{id}")
+    public ResponseEntity<?> modifySupplier(@PathVariable("id") Long id,@RequestBody SupplierEntity supplierEntity){
 
-      if(supplierEntity == null){
-          return ResponseEntity.notFound().build();
-      }else{
-          supplier.setId(supplierEntity.getId());
-          supplierDAO.modifySupplier(supplierEntity);
-          return ResponseEntity.ok(supplier);
-      }
+        SupplierEntity newSupplier = supplierDAO.getSupplierById(id);
+
+        supplierEntity.setProfession(newSupplier.getProfession());
+        supplierEntity.setId(newSupplier.getId());
+
+        supplierEntity.setSupplierName(supplierEntity.getSupplierName());
+        supplierEntity.setResume(supplierEntity.getResume());
+        supplierEntity.setPassword(supplierEntity.getPassword());
+        supplierEntity.setWorkStatus(supplierEntity.getWorkStatus());
+        supplierEntity.setEmail(supplierEntity.getEmail());
+        supplierEntity.setFoto(supplierEntity.getFoto());
+        supplierEntity.setContactNumber(supplierEntity.getContactNumber());
+
+        supplierRepository.save(supplierEntity);
+        return ResponseEntity.ok(supplierEntity);
 
     }
 
@@ -85,7 +93,7 @@ public class SupplierController {
 
     @GetMapping("/user/{name}")
     public ResponseEntity<?> getByName(@PathVariable("name") String name){
-       SupplierEntity supp= supplierDAO.getSupplierByName(name);
+        SupplierEntity supp= supplierDAO.getSupplierByName(name);
         return ResponseEntity.ok(supp);
     }
 
