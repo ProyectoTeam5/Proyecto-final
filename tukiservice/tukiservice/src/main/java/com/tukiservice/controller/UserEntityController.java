@@ -75,13 +75,17 @@ public class UserEntityController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> modifyUserEntity(@PathVariable("id") Long id, @RequestBody UserEntity userEntity ){
+       
         UserEntity newUserEntity = userDAO.getUsersById(id);
 
-        userEntity.setName(newUserEntity.getName());
-        userEntity.setEmail(newUserEntity.getEmail());
-        userEntity.setPassword(newUserEntity.getPassword());
-        userEntity.setDate_service(newUserEntity.getDate_service());
+        userEntity.setId(newUserEntity.getId());
         userEntity.setAddress(newUserEntity.getAddress());
+
+        userEntity.setName(userEntity.getName());
+        userEntity.setEmail(userEntity.getEmail());
+        userEntity.setPassword(userEntity.getPassword());
+        userEntity.setDate_service(userEntity.getDate_service());
+        
 
         userRepo.save(userEntity);
         return ResponseEntity.ok(userEntity);
