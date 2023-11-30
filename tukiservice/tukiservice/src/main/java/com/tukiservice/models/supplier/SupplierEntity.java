@@ -2,6 +2,8 @@ package com.tukiservice.models.supplier;
 
 import java.util.Set;
 
+import com.tukiservice.models.user.UserEntity;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -52,10 +54,10 @@ public class SupplierEntity {
     @JoinTable(name = "supplier_profession", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
     private Set<Service> profession;
 
- /* @NotNull
-   @OneToMany(fetch = FetchType.EAGER, targetEntity = UserEntity.class, cascade = CascadeType.PERSIST)
+   
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = UserEntity.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "supplier_user", joinColumns = @JoinColumn(name = "id"),  inverseJoinColumns = @JoinColumn(name = "id_user"))
-    private  Set<UserEntity> clients;*/
+    private  Set<UserEntity> clients;
 
 
 }
