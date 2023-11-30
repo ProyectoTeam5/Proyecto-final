@@ -50,7 +50,7 @@ public class SupplierController {
         }
     }
 
-    @PostMapping ()
+    @PostMapping ("/auth")
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDTO supplier){
         supplierDAO.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
