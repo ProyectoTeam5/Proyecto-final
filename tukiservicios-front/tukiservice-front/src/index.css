@@ -1,0 +1,33 @@
+html {
+    font-size: 16pt
+}
+
+body {
+    background-color: black;
+
+}
+
+
+@media screen and (max-width: 1680px) {
+
+    html {
+        font-size: 12pt;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    html {
+        font-size: 11pt;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+
+    html {
+        font-size: 10pt;
+    }
+
+}

@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 export default function Header() {
     return (
         <>
-            <nav>
+            <nav className="">
+
+                <img src="src/image/logo_Tk.jpg" />
+
                 <Link to={"/"}>Index</Link>
                 <Link to={"/crearSupplier"}>Registrarse como PROVEEDOR</Link>
                 <Link to={"/listaSuppliers"}>listado de PROVEEDORES</Link>

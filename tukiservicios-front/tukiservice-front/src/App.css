@@ -1,3 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.hero {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  width: 100%;
+  background-image: url("./image/fondo.jpg");
+  background-size: cover;
+}
+
+.hero2 {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  width: 100%;
+  background-image: url("./image/fondo2.jpg");
+  background-size: cover;
+  background-color: #ffffff;
+}
+
+.hero3 {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  width: 100%;
+  background-image: url("./image/fondo3.jpg");
+  background-size: cover;
+  background-color: #ffffff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  /* background-color: #ffffff; */
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.content2 {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  /* background-color: #ffffff; */
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 56px;
+  font-weight: bolder;
+}
+
+.content p {
+  font-size: 16px;
+  margin: 15px 0;
+  max-width: 550px;
+  letter-spacing: 2px;
+}
+
 #root {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -7,10 +80,12 @@
 }
 
 nav {
+
   margin-bottom: 20px;
   display: flex;
-  gap: 8px;
+  gap: 12px;
   font-size: x-small;
+  vertical-align: text-bottom;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -19,8 +94,52 @@ form {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 1em;
+  background: #ddd;
+  border-bottom: 2px solid white;
 }
 
 select {
   flex-direction: column;
+}
+
+a {
+  margin-bottom: inherit;
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #eca50c;
+}
+
+a:visited {
+  color: #eca50c;
+}
+
+a:focus {
+
+  color: #b9b9b8;
+}
+
+a:hover {
+
+  color: #b9b9b8;
+}
+
+a:active {
+
+  color: #ffffff;
 }
