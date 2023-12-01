@@ -1,9 +1,6 @@
 package com.tukiservice.models.supplier;
 
 import java.util.Set;
-
-import com.tukiservice.models.user.UserEntity;
-
 import jakarta.persistence.*;
 import lombok.*;
 
