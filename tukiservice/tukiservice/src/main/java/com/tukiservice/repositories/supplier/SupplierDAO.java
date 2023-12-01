@@ -1,12 +1,12 @@
 package com.tukiservice.repositories.supplier;
 import com.tukiservice.DTO.SupplierDTO;
+import com.tukiservice.models.Erole;
 import com.tukiservice.models.supplier.ProfessionEnum;
 import com.tukiservice.models.supplier.Service;
 import com.tukiservice.models.supplier.SupplierEntity;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
@@ -34,11 +34,16 @@ public class SupplierDAO {
         return supplierJ.findById(id).orElse(null);
     }
 
-    public void createSupplier(@Valid SupplierDTO supplierDTO){
+    public void createSupplier(SupplierDTO supplierDTO){
         Set<Service> Professions = supplierDTO.getProfession().stream()
                 .map(r -> Service.builder()
                         .profession(ProfessionEnum.valueOf(r)).build())
                 .collect(Collectors.toSet());
+
+        Set<Service> Roles = supplierDTO.getRoles().stream()
+                .map(r-> Service.builder()
+                        .rol(Erole.valueOf(r)).build()).collect(Collectors.toSet());
+
 
 
 
@@ -49,6 +54,8 @@ public class SupplierDAO {
                 .foto(supplierDTO.getFoto())
                 .password(supplierDTO.getPassword())
                 .resume(supplierDTO.getResume())
+                .profession(Professions)
+                .roles(Roles)
                 .build();
 
         supplierJ.save(supplierEntity);

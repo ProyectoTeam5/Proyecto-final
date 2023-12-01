@@ -10,7 +10,6 @@ import java.util.Set;
 public class SupplierDTO {
 
 
-
     private String supplierName;
 
     private String foto;
@@ -27,5 +26,5 @@ public class SupplierDTO {
 
     private Set<String> profession;
 
-    //private  Set<String> clients;
+    private Set<String> roles;
 }
