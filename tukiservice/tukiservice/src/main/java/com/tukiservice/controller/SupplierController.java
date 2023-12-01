@@ -1,6 +1,7 @@
 package com.tukiservice.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -76,6 +77,7 @@ public class SupplierController {
         supplierEntity.setId(newSupplier.getId());
         supplierEntity.setRoles(newSupplier.getRoles());
 
+
         supplierEntity.setSupplierName(supplierEntity.getSupplierName());
         supplierEntity.setResume(supplierEntity.getResume());
         supplierEntity.setPassword(supplierEntity.getPassword());
@@ -124,5 +126,9 @@ public class SupplierController {
     }
 
 
-
+    @GetMapping("/img")
+    public String form(Model model){
+        model.addAttribute("suppliers", new SupplierEntity());
+        return "form";
+    }
 }

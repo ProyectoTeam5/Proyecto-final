@@ -1,4 +1,4 @@
-package com.tukiservice.models;
+package com.tukiservice.models.roles;
 
 public enum Erole {
     USER,

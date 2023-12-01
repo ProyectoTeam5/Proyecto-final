@@ -1,7 +1,6 @@
 package com.tukiservice.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +19,7 @@ import com.tukiservice.repositories.user.UserEntityDAO;
 import com.tukiservice.repositories.user.UserEntityRepository;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 @CrossOrigin(origins = "*")
 public class UserEntityController {
 
@@ -32,6 +31,7 @@ public class UserEntityController {
 
     @PostMapping
     public ResponseEntity<?> createUsers(@RequestBody UserEntityDTO userEntityDTO){
+
         userDAO.createUsers(userEntityDTO);
         return ResponseEntity.ok(userEntityDTO);
     }
@@ -56,7 +56,7 @@ public class UserEntityController {
         }
     }
 
-    @GetMapping("/user/{name}")
+    @GetMapping("byname/{name}")
     public ResponseEntity<?> getByUserName(@PathVariable("name") String name){
         UserEntity users = userDAO.getUserByName(name);
         return ResponseEntity.ok(users);
@@ -80,11 +80,12 @@ public class UserEntityController {
 
         userEntity.setId(newUserEntity.getId());
         userEntity.setAddress(newUserEntity.getAddress());
+        userEntity.setRoles(newUserEntity.getRoles());
 
         userEntity.setName(userEntity.getName());
         userEntity.setEmail(userEntity.getEmail());
         userEntity.setPassword(userEntity.getPassword());
-        userEntity.setDate_service(userEntity.getDate_service());
+        userEntity.setDateService(userEntity.getDateService());
         
 
         userRepo.save(userEntity);

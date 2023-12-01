@@ -1,8 +1,9 @@
 package com.tukiservice.repositories.supplier;
 import com.tukiservice.DTO.SupplierDTO;
-import com.tukiservice.models.Erole;
+import com.tukiservice.models.roles.Erole;
+import com.tukiservice.models.roles.RolesService;
 import com.tukiservice.models.supplier.ProfessionEnum;
-import com.tukiservice.models.supplier.Service;
+import com.tukiservice.models.supplier.ProfessionService;
 import com.tukiservice.models.supplier.SupplierEntity;
 
 import jakarta.persistence.EntityManager;
@@ -35,14 +36,14 @@ public class SupplierDAO {
     }
 
     public void createSupplier(SupplierDTO supplierDTO){
-        Set<Service> Professions = supplierDTO.getProfession().stream()
-                .map(r -> Service.builder()
+        Set<ProfessionService> Professions = supplierDTO.getProfession().stream()
+                .map(r -> ProfessionService.builder()
                         .profession(ProfessionEnum.valueOf(r)).build())
                 .collect(Collectors.toSet());
 
-        Set<Service> Roles = supplierDTO.getRoles().stream()
-                .map(r-> Service.builder()
-                        .rol(Erole.valueOf(r)).build()).collect(Collectors.toSet());
+        Set<RolesService> Roles = supplierDTO.getRoles().stream()
+                .map(r-> RolesService.builder()
+                        .roles(Erole.valueOf(r)).build()).collect(Collectors.toSet());
 
 
 

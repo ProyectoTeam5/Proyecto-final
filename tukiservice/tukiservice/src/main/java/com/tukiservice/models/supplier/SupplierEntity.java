@@ -1,6 +1,8 @@
 package com.tukiservice.models.supplier;
 
 import java.util.Set;
+
+import com.tukiservice.models.roles.RolesService;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,9 +25,7 @@ public class SupplierEntity {
 
     private String email;
 
-
     private String password;
-
 
     private String resume;
 
@@ -37,15 +37,15 @@ public class SupplierEntity {
     private String workStatus;
 
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Service.class, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = ProfessionService.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "supplier_profession", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private Set<Service> profession;
+    private Set<ProfessionService> profession;
 
 
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Service.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "supplier_roles", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private Set<Service> roles;
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = RolesService.class, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "supplier_roles", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
+    private Set<RolesService> roles;
 
 
 }
