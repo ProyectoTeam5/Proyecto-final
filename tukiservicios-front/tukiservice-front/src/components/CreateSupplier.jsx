@@ -130,11 +130,13 @@ export default function CreateSupplier() {
                                     <option value="3">En 48 hs.</option>
                                 </select>
                                 <label htmlFor="floatingSelectGrid1">Status:</label>
+                                <br />
+                                <button type="button" className="btn btn-success">Registrar</button>
                             </div>
+
                         </div>
 
-                        <br />
-                        <button type="button" className="btn btn-success">Registrar</button>
+
                     </form>
                 </div>
             </div>
