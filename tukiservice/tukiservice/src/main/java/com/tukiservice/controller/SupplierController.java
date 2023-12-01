@@ -77,6 +77,7 @@ public class SupplierController {
         supplierEntity.setId(newSupplier.getId());
         supplierEntity.setRoles(newSupplier.getRoles());
 
+
         supplierEntity.setSupplierName(supplierEntity.getSupplierName());
         supplierEntity.setResume(supplierEntity.getResume());
         supplierEntity.setPassword(supplierEntity.getPassword());

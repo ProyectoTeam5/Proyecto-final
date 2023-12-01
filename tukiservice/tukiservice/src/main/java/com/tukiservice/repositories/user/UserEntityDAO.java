@@ -3,9 +3,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.tukiservice.models.Erole;
-import com.tukiservice.models.supplier.Service;
-import jakarta.validation.Valid;
+import com.tukiservice.models.roles.Erole;
+import com.tukiservice.models.roles.RolesService;
+import com.tukiservice.models.supplier.ProfessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tukiservice.DTO.UserEntityDTO;
 import com.tukiservice.models.user.AddressEnum;
@@ -22,7 +22,7 @@ public class UserEntityDAO {
     @Autowired
     UserEntityRepository userER;
 
-    @Autowired
+
     @PersistenceContext
     EntityManager em;
 
@@ -32,15 +32,16 @@ public class UserEntityDAO {
                 .map( r -> AddressService.builder()
                         .address(AddressEnum.valueOf(r)).build())
                 .collect(Collectors.toSet());
-        Set<Service> Roles = userDTO.getRoles().stream()
-                .map(r-> Service.builder()
-                        .rol(Erole.valueOf(r)).build()).collect(Collectors.toSet());
+
+        Set<RolesService> Roles = userDTO.getRoles().stream()
+                .map(r-> RolesService.builder()
+                        .roles(Erole.valueOf(r)).build()).collect(Collectors.toSet());
 
         UserEntity userEntity = UserEntity.builder()
                 .name(userDTO.getName())
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
-                .date_service(userDTO.getDate_service())
+                .dateService(userDTO.getDateService())
                 .address(AddressD)
                 .roles(Roles)
                 .build();
@@ -73,7 +74,7 @@ public class UserEntityDAO {
         userentity.setName(userentity.getName());
         userentity.setEmail(userentity.getEmail());
         userentity.setPassword(userentity.getPassword());
-        userentity.setDate_service(userentity.getDate_service());
+        userentity.setDateService(userentity.getDateService());
         userentity.setAddress(userentity.getAddress());
 
         userER.save(userentity);

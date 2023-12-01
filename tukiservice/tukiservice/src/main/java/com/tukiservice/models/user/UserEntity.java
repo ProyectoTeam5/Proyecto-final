@@ -1,6 +1,7 @@
 package com.tukiservice.models.user;
 
-import com.tukiservice.models.supplier.Service;
+import com.tukiservice.models.roles.RolesService;
+import com.tukiservice.models.supplier.ProfessionService;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -16,27 +17,25 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
+    @Column(name = "user_id")
     private Long id;
 
-    @NonNull
     private String name;
 
-    @NonNull
     private String email;
 
-    @NonNull
     private String password;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date_service;
+    @Column(name = "date_service")
+    private Date dateService;
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = AddressService.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
     private Set<AddressService> address;
 
-     @OneToMany(fetch = FetchType.EAGER, targetEntity = Service.class, cascade = CascadeType.PERSIST)
-     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
-     private Set<Service> roles;
+     @OneToMany(fetch = FetchType.EAGER, targetEntity = RolesService.class, cascade = CascadeType.PERSIST)
+     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
+     private Set<RolesService> roles;
 
 }

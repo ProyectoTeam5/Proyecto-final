@@ -1,6 +1,5 @@
 package com.tukiservice.models.supplier;
 
-import com.tukiservice.models.Erole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name = "service")
-public class Service {
+public class ProfessionService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "service_id")
@@ -21,7 +20,6 @@ public class Service {
     @Enumerated(EnumType.STRING)
     private ProfessionEnum profession;
 
-    @Enumerated(EnumType.STRING)
-    private Erole rol;
+
 
 }
