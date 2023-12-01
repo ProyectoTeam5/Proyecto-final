@@ -1,5 +1,6 @@
 package com.tukiservice.models.user;
 
+import com.tukiservice.models.supplier.Service;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -34,8 +35,8 @@ public class UserEntity {
     @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "address_id"))
     private Set<AddressService> address;
 
-    // @OneToMany(fetch = FetchType.EAGER, targetEntity = AddressEnum.class, cascade = CascadeType.PERSIST)
-    // @JoinTable(name = "user_supplier", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
-    // private Set<String> supplier_id;
+     @OneToMany(fetch = FetchType.EAGER, targetEntity = Service.class, cascade = CascadeType.PERSIST)
+     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+     private Set<Service> roles;
 
 }
