@@ -80,6 +80,7 @@ public class UserEntityController {
 
         userEntity.setId(newUserEntity.getId());
         userEntity.setAddress(newUserEntity.getAddress());
+        userEntity.setRoles(newUserEntity.getRoles());
 
         userEntity.setName(userEntity.getName());
         userEntity.setEmail(userEntity.getEmail());
