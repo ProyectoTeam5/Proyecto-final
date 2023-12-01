@@ -20,3 +20,7 @@ form {
   align-items: center;
   margin-top: 20px;
 }
+
+select {
+  flex-direction: column;
+}

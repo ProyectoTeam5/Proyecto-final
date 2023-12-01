@@ -50,7 +50,7 @@ export default function SuppliersList() {
                                 <span key={professionItem.idservice}>
                                     {professionItem.profession}
                                 </span>
-                            ))};
+                            ))}
                             <td><button className='btn btn-danger'
                                 onClick={() => deleteUserSubmit(item)}
                             >Delete</button></td>
