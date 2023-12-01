@@ -1,7 +1,6 @@
 package com.tukiservice.models.user;
 
 import com.tukiservice.models.roles.RolesService;
-import com.tukiservice.models.supplier.ProfessionService;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;

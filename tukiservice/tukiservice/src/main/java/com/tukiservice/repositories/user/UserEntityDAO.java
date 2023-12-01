@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import com.tukiservice.models.roles.Erole;
 import com.tukiservice.models.roles.RolesService;
-import com.tukiservice.models.supplier.ProfessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tukiservice.DTO.UserEntityDTO;
 import com.tukiservice.models.user.AddressEnum;
