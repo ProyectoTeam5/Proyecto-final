@@ -50,7 +50,7 @@ public class SupplierController {
         }
     }
 
-    @PostMapping ("/auth")
+    @PostMapping
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDTO supplier){
         supplierDAO.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
@@ -74,6 +74,7 @@ public class SupplierController {
 
         supplierEntity.setProfession(newSupplier.getProfession());
         supplierEntity.setId(newSupplier.getId());
+        supplierEntity.setRoles(newSupplier.getRoles());
 
         supplierEntity.setSupplierName(supplierEntity.getSupplierName());
         supplierEntity.setResume(supplierEntity.getResume());

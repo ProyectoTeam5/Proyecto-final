@@ -10,7 +10,6 @@ import com.tukiservice.models.user.AddressService;
 import com.tukiservice.models.user.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,7 +23,7 @@ public class UserEntityDAO {
     @PersistenceContext
     EntityManager em;
 
-    public void createUsers(@Valid UserEntityDTO userDTO) {
+    public void createUsers(UserEntityDTO userDTO) {
 
          Set<AddressService> AddressD = userDTO.getAddress().stream()
                  .map( r -> AddressService.builder()

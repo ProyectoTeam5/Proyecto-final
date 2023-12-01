@@ -1,5 +1,6 @@
 package com.tukiservice.models.supplier;
 
+import com.tukiservice.models.Erole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,8 @@ public class Service {
 
     @Enumerated(EnumType.STRING)
     private ProfessionEnum profession;
+
+    @Enumerated(EnumType.STRING)
+    private Erole rol;
 
 }
