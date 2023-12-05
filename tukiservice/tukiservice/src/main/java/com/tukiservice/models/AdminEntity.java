@@ -2,8 +2,7 @@ package com.tukiservice.models;
 
 import java.util.Set;
 
-import com.tukiservice.models.supplier.SupplierEntity;
-import com.tukiservice.models.user.UserEntity;
+import com.tukiservice.models.roles.RolesService;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,19 +20,16 @@ import lombok.Data;
 public class AdminEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int admin_id;
+    @Column(name = "admin_id")
+    private Long adminId;
 
-
-    private String admin_name;
-
-
+    @Column(name = "admin_name")
+    private String adminName;
+    
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = UserEntity.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
-    private Set<UserEntity> users;
-
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = SupplierEntity.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "supplier_admin", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
-    private Set<SupplierEntity> suppliers;
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = RolesService.class, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "admin_roles", joinColumns = @JoinColumn(name = "admin_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
+    private Set<RolesService> role;
+    
 }
