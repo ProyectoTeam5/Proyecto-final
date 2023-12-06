@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     
-    @Bean
+   @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(dis->dis.disable())
@@ -22,6 +22,7 @@ public class SecurityConfig {
                     auth.requestMatchers(HttpMethod.POST, "api/user/create").permitAll();
                     auth.requestMatchers(HttpMethod.GET,"api/supplier").permitAll();
                     auth.requestMatchers(HttpMethod.GET,"api/user").permitAll();
+                    auth.requestMatchers(HttpMethod.POST,"api/login").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session->{

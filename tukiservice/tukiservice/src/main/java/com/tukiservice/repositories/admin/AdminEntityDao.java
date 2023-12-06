@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tukiservice.DTO.AdminEntityDTO;
+import com.tukiservice.models.DTO.AdminEntityDTO;
 import com.tukiservice.models.AdminEntity;
 import com.tukiservice.models.roles.Erole;
 import com.tukiservice.models.roles.RolesService;

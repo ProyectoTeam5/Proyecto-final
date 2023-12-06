@@ -1,4 +1,4 @@
-package com.tukiservice.DTO;
+package com.tukiservice.models.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

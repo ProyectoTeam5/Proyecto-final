@@ -1,4 +1,4 @@
-package com.tukiservice.DTO;
+package com.tukiservice.models.DTO;
 
 import java.util.Date;
 import java.util.Set;
