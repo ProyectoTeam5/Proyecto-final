@@ -17,6 +17,6 @@ public class UserEntityDTO {
     private String email;
     private String password;
     private Date dateService;
-    private Set<String> address;
+    private String address;
     private Set<String> roles;
 }

@@ -7,8 +7,6 @@ import com.tukiservice.models.roles.Erole;
 import com.tukiservice.models.roles.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tukiservice.DTO.UserEntityDTO;
-import com.tukiservice.models.user.AddressEnum;
-import com.tukiservice.models.user.AddressService;
 import com.tukiservice.models.user.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -27,10 +25,7 @@ public class UserEntityDAO {
 
     public void createUsers(UserEntityDTO userDTO) {
 
-        Set<AddressService> AddressD = userDTO.getAddress().stream()
-                .map( r -> AddressService.builder()
-                        .address(AddressEnum.valueOf(r)).build())
-                .collect(Collectors.toSet());
+
 
         Set<RolesService> Roles = userDTO.getRoles().stream()
                 .map(r-> RolesService.builder()
@@ -41,7 +36,7 @@ public class UserEntityDAO {
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
                 .dateService(userDTO.getDateService())
-                .address(AddressD)
+                .address(userDTO.getAddress())
                 .roles(Roles)
                 .build();
 

@@ -2,14 +2,13 @@ package com.tukiservice.repositories.supplier;
 import com.tukiservice.DTO.SupplierDTO;
 import com.tukiservice.models.roles.Erole;
 import com.tukiservice.models.roles.RolesService;
-import com.tukiservice.models.supplier.ProfessionEnum;
-import com.tukiservice.models.supplier.ProfessionService;
 import com.tukiservice.models.supplier.SupplierEntity;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,10 +35,7 @@ public class SupplierDAO {
     }
 
     public void createSupplier(SupplierDTO supplierDTO){
-        Set<ProfessionService> Professions = supplierDTO.getProfession().stream()
-                .map(r -> ProfessionService.builder()
-                        .profession(ProfessionEnum.valueOf(r)).build())
-                .collect(Collectors.toSet());
+
 
         Set<RolesService> Roles = supplierDTO.getRoles().stream()
                 .map(r-> RolesService.builder()
@@ -56,7 +52,7 @@ public class SupplierDAO {
                 .password(supplierDTO.getPassword())
                 .resume(supplierDTO.getResume())
                 .workStatus(supplierDTO.getWorkStatus())
-                .profession(Professions)
+                .profession(supplierDTO.getProfession())
                 .roles(Roles)
                 .build();
 
@@ -92,4 +88,11 @@ public class SupplierDAO {
         String query = "FROM SupplierEntity WHERE supplierName=:supplierName";
         return (SupplierEntity) em.createQuery(query).setParameter("supplierName",supplierName).getSingleResult();
     }
+
+   /* public List<?> findByProffesion(UserEntity user){
+        String query = "FROM UserEntity WHERE profession:=".concat(user.getRoles().toString());
+        //System.out.println(user);
+        return null;
+
+    }*/
 }

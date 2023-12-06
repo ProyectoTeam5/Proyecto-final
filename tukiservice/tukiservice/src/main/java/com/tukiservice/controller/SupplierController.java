@@ -100,6 +100,11 @@ public class SupplierController {
         return ResponseEntity.ok(supp);
     }
 
+ /*   @GetMapping("/profession")
+    public List<?> findByProffesion(@PathVariable String profession){
+        return null;
+    }*/
+
 
     @PostMapping("/")
     public String saveIMG(@RequestParam(name="file", required = false) MultipartFile photo, SupplierDTO supplier,

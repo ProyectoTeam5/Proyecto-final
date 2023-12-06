@@ -36,15 +36,13 @@ public class SupplierEntity {
     @Column(name = "work_status")
     private String workStatus;
 
-
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = ProfessionService.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "supplier_profession", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private Set<ProfessionService> profession;
+    private String profession;
 
 
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = RolesService.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "supplier_roles", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
+
     private Set<RolesService> roles;
 
 

@@ -29,9 +29,7 @@ public class UserEntity {
     @Column(name = "date_service")
     private Date dateService;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = AddressService.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
-    private Set<AddressService> address;
+    private String address;
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = RolesService.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))

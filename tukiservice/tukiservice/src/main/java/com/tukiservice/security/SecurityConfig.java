@@ -20,6 +20,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->{
                     auth.requestMatchers(HttpMethod.POST, "api/supplier/create").permitAll();
                     auth.requestMatchers(HttpMethod.POST, "api/user/create").permitAll();
+                    auth.requestMatchers(HttpMethod.GET,"/api/supplier").permitAll();
+                    auth.requestMatchers(HttpMethod.GET,"/api/supplier/profession").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session->{
@@ -27,6 +29,8 @@ public class SecurityConfig {
                     session.invalidSessionUrl("/login");
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
+                .httpBasic()
+                .and()
                 .build();
     }
 }

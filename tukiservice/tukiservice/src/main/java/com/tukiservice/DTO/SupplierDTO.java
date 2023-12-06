@@ -24,7 +24,7 @@ public class SupplierDTO {
 
     private String workStatus;
 
-    private Set<String> profession;
+    private String profession;
 
     private Set<String> roles;
 }
