@@ -29,7 +29,7 @@ public class UserEntityController {
     @Autowired
     UserEntityRepository userRepo;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> createUsers(@RequestBody UserEntityDTO userEntityDTO){
 
         userDAO.createUsers(userEntityDTO);
