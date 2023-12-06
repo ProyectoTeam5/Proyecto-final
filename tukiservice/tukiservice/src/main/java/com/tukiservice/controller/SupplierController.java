@@ -51,7 +51,7 @@ public class SupplierController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDTO supplier){
         supplierDAO.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
