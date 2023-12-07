@@ -50,11 +50,7 @@ export default function UsersList() {
                                     <td>{item.name}</td>
                                     <td>{item.email}</td>
                                     <td>{item.password}</td>
-                                    {item.address.map((addressItem) => (
-                                        <td key={item.id}>
-                                            {addressItem.address}
-                                        </td>
-                                    ))}
+                                    <td>{item.address}</td>
                                     {/* <td>{item.address}</td> */}
                                     {/* <td>{item.supplier_id}</td> */}
 
