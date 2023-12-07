@@ -1,4 +1,4 @@
-package com.tukiservice.DTO;
+package com.tukiservice.models.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class SupplierDTO {
 
     private String workStatus;
 
-    private Set<String> profession;
+    private String profession;
 
     private Set<String> roles;
 }

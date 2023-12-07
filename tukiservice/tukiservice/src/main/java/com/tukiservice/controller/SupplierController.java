@@ -1,4 +1,5 @@
 package com.tukiservice.controller;
+import com.tukiservice.service.supplier.ISupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -6,9 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tukiservice.DTO.SupplierDTO;
+import com.tukiservice.models.DTO.SupplierDTO;
 import com.tukiservice.models.supplier.SupplierEntity;
-import com.tukiservice.repositories.supplier.SupplierDAO;
 import com.tukiservice.repositories.supplier.SupplierRepository;
 
 import java.io.IOException;
@@ -24,14 +24,14 @@ import java.util.Objects;
 public class SupplierController {
 
     @Autowired
-    SupplierDAO supplierDAO;
+    ISupplierService supplierService;
 
     @Autowired
     SupplierRepository supplierRepository;
 
     @GetMapping
     public ResponseEntity<List<SupplierEntity>> getAllSupplier(){
-        List<SupplierEntity> listSupplier = supplierDAO.getAllSuppliers();
+        List<SupplierEntity> listSupplier = supplierService.findAllSuppliers();
 
         if(listSupplier.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -42,7 +42,7 @@ public class SupplierController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SupplierEntity> getSupplierById(@PathVariable Long id){
-        SupplierEntity supplier = supplierDAO.getSupplierById(id);
+        SupplierEntity supplier = supplierService.findSupplierById(id);
 
         if(supplier == null){
             return ResponseEntity.notFound().build();
@@ -51,32 +51,30 @@ public class SupplierController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> createSupplier(@RequestBody SupplierDTO supplier){
-        supplierDAO.createSupplier(supplier);
+        supplierService.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<SupplierEntity> deleteSupplier(@PathVariable Long id){
-        SupplierEntity supplier = supplierDAO.getSupplierById(id);
+        SupplierEntity supplier = supplierService.findSupplierById(id);
         if(supplier == null){
             return ResponseEntity.notFound().build();
         }else{
-            supplierDAO.deleteSupplier(id);
+            supplierService.deleteSupplierById(id);
             return ResponseEntity.ok(supplier);
         }
     }
-
     @PutMapping("/{id}")
     public ResponseEntity<?> modifySupplier(@PathVariable("id") Long id,@RequestBody SupplierEntity supplierEntity){
 
-        SupplierEntity newSupplier = supplierDAO.getSupplierById(id);
+        SupplierEntity newSupplier = supplierService.findSupplierById(id);
 
         supplierEntity.setProfession(newSupplier.getProfession());
         supplierEntity.setId(newSupplier.getId());
         supplierEntity.setRoles(newSupplier.getRoles());
-
 
         supplierEntity.setSupplierName(supplierEntity.getSupplierName());
         supplierEntity.setResume(supplierEntity.getResume());
@@ -93,14 +91,28 @@ public class SupplierController {
 
 
 
-
-    @GetMapping("/supplier/{name}")
+    @GetMapping("/byname/{name}")
     public ResponseEntity<?> getByName(@PathVariable("name") String name){
-        SupplierEntity supp= supplierDAO.getSupplierByName(name);
-        return ResponseEntity.ok(supp);
+        List<SupplierEntity> listSup= supplierService.findSupplierByName(name);
+        if(listSup.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }else{
+        return ResponseEntity.ok(listSup);
+
+        }
     }
 
+    @GetMapping("/byprof/{profession}")
+    public ResponseEntity<?> findByProffesion(@PathVariable String profession){
+        List<SupplierEntity> listProf = supplierService.findSupplierByProfession(profession);
+        if(listProf.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.ok(listProf);
+        }
+    }
 
+    //------------------------------Images------------------------------
     @PostMapping("/")
     public String saveIMG(@RequestParam(name="file", required = false) MultipartFile photo, SupplierDTO supplier,
                           RedirectAttributes flash){
@@ -118,7 +130,7 @@ public class SupplierController {
             catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            supplierDAO.createSupplier(supplier);
+            supplierService.createSupplier(supplier);
 
             flash.addFlashAttribute("success", "Uploaded successfully");
         }

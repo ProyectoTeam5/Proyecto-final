@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom'
 
 function CreateUser() {
 
-    const [address, setAddress] = useState(["CHACRASDECORIAO_ESTE"]);
+    const [address, setAddress] = useState("CHACRASDECORIAO_ESTE");
     const navigate = useNavigate();
     const direcVal = ({ target }) => {
 
         const { value } = target;
         console.log(value);
         if (value == "CHACRASDECORIAO_ESTE") {
-            setAddress(["CHACRASDECORIAO_ESTE"])
+            setAddress("CHACRASDECORIAO_ESTE")
         } if (value == "CHACRASDECORIA_NORTE") {
-            setAddress(["CHACRASDECORIA_NORTE"])
+            setAddress("CHACRASDECORIA_NORTE")
         }
         if (value == "CHACRASDECORIA_SUR") {
-            setAddress(["CHACRASDECORIA_SUR"])
+            setAddress("CHACRASDECORIA_SUR")
         }
     }
 
@@ -27,7 +27,6 @@ function CreateUser() {
         email: '',
         password: '',
         repeatPassword: '',
-
         "roles": ["USER"]
     });
 
@@ -78,7 +77,7 @@ function CreateUser() {
                 email: '',
                 password: '',
                 repeatPassword: '',
-                address: '',
+                address,
                 roles: ["USER"]
             });
         } catch (error) {
@@ -131,9 +130,9 @@ function CreateUser() {
                                 <div className="form-floating">
                                     <select className="form-select" aria-label="Floating label select example " onClick={(e) => direcVal(e)} >
 
-                                        <option id={["CHACRASDECORIAO_ESTE"]} value={["CHACRASDECORIAO_ESTE"]}>Chacras de Coria ESTE</option>
-                                        <option id={["CHACRASDECORIA_NORTE"]} value={["CHACRASDECORIA_NORTE"]} >Chacras de Coria NORTE</option>
-                                        <option id={["CHACRASDECORIA_SUR"]} value={["CHACRASDECORIA_SUR"]}>Chacras de Coria SUR</option>
+                                        <option id={"CHACRASDECORIAO_ESTE"} value={"CHACRASDECORIAO_ESTE"}>Chacras de Coria ESTE</option>
+                                        <option id={"CHACRASDECORIA_NORTE"} value={"CHACRASDECORIA_NORTE"} >Chacras de Coria NORTE</option>
+                                        <option id={"CHACRASDECORIA_SUR"} value={"CHACRASDECORIA_SUR"}>Chacras de Coria SUR</option>
                                     </select>
                                     <label htmlFor="floatingSelectGrid">Dirección:</label>
 

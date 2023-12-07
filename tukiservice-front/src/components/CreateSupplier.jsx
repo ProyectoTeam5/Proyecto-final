@@ -5,20 +5,21 @@ import { useNavigate } from 'react-router-dom'
 
 export default function CreateSupplier() {
 
-    const[profession,setProf] = useState(["PLOMERO"]);
+    
     const[workStatus,setWorkStatus] = useState("DISPONIBLE");
+    const[profession,setProf] = useState("PLOMERO");
 
     const profVal=({target})=>{
 
        const{value} = target;
        console.log(value);
        if(value == "PLOMERO"){
-            setProf(["PLOMERO"])
+            setProf("PLOMERO")
        }if(value == "GASISTA"){
-            setProf(["GASISTA"])
+            setProf("GASISTA")
        }
        if(value == "ELECTRICISTA"){
-            setProf(["ELECTRICISTA"])
+            setProf("ELECTRICISTA")
        }
     }
     const profStatus=({target})=>{
@@ -184,9 +185,9 @@ export default function CreateSupplier() {
                     <div className="form-floating">
                          <select className="form-select"  aria-label="Floating label select example " onClick={(e)=>profVal(e)} >
                     
-                            <option id={["PLOMERO"]} value={["PLOMERO"]}>Plomero</option>
-                            <option id={["GASISTA"]} value={["GASISTA"]} >Gasista</option>
-                            <option  id={["ELECTRICISTA"]} value={["ELECTRICISTA"]}>Electricista</option>
+                            <option id={"PLOMERO"} value={"PLOMERO"}>Plomero</option>
+                            <option id={"GASISTA"} value={"GASISTA"} >Gasista</option>
+                            <option  id={"ELECTRICISTA"} value={"ELECTRICISTA"}>Electricista</option>
                         </select>
                          <label htmlFor="floatingSelectGrid">Profesión:</label>
 

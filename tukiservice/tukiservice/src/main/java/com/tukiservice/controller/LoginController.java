@@ -1,7 +1,7 @@
 package com.tukiservice.controller;
 
 import com.tukiservice.models.user.UserEntity;
-import com.tukiservice.repositories.user.UserEntityDAO;
+import com.tukiservice.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     @Autowired
-    UserEntityDAO userEntityDAO;
+    IUserService userService;
     @PostMapping
     public String loginUser(@RequestBody UserEntity userEntity){
-        if(userEntityDAO.verifyUser(userEntity)){
+        if(userService.verifyUser(userEntity)){
             return "OK";
         }else{
             return "FAIL";

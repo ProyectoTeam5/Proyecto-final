@@ -55,11 +55,7 @@ export default function SuppliersList() {
                                     <td>{item.resume}</td>
                                     <td>{item.contactNumber}</td>
                                     <td>{item.workStatus}</td>
-                                    {item.profession.map((professionItem) => (
-                                        <td key={professionItem.idservice}>
-                                            {professionItem.profession}
-                                        </td>
-                                    ))}
+                                    <td>{item.profession}</td>
                                     <td><button className='btn btn-danger'
                                         onClick={() => deleteSupplierSubmit(item)}
                                     >Delete</button></td>
