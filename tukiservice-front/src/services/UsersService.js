@@ -10,7 +10,7 @@ export async function getAllUsers() {
 
 
 export const createNewUser = async (user) => {
-    await fetch(`http://localhost:8080/api/user`, {
+    await fetch(`http://localhost:8080/api/user/create`, {
         body: JSON.stringify(user),
         headers: {
             "Content-type": "application/json"

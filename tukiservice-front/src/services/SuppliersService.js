@@ -9,7 +9,7 @@ export async function getAllSuppliers() {
 }
 
 export const createNewSupplier = async (supplier) => {
-    await fetch(`http://localhost:8080/api/supplier`, {
+    await fetch(`http://localhost:8080/api/supplier/create`, {
         body: JSON.stringify(supplier),
         headers: {
             "Content-type": "application/json"
