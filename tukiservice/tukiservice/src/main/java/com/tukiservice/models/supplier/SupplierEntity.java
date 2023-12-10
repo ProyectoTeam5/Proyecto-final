@@ -27,7 +27,7 @@ public class SupplierEntity {
     @Column(name="supplier_name")
     private String supplierName;
 
-    @Lob
+    
     private String foto;
 
     @NotBlank

@@ -2,21 +2,11 @@ package com.tukiservice.controller;
 import com.tukiservice.service.supplier.ISupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.tukiservice.models.DTO.SupplierDTO;
 import com.tukiservice.models.supplier.SupplierEntity;
 import com.tukiservice.repositories.supplier.SupplierRepository;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/supplier")
@@ -113,34 +103,34 @@ public class SupplierController {
     }
 
     //------------------------------Images------------------------------
-    @PostMapping("/")
-    public String saveIMG(@RequestParam(name="file", required = false) MultipartFile photo, SupplierDTO supplier,
-                          RedirectAttributes flash){
-        if(!photo.isEmpty()){
-            String route = "src//main//resources//static/img";
+    // @PostMapping("/")
+    // public String saveIMG(@RequestParam(name="file", required = false) MultipartFile photo, SupplierDTO supplier,
+    //                       RedirectAttributes flash){
+    //     if(!photo.isEmpty()){
+    //         String route = "src//main//resources//static/img";
 
-            try {
-                byte[] bytes = photo.getBytes();
-                Path absoluteRoute = Paths.get(route + "//" + photo.getOriginalFilename());
-                Files.write(absoluteRoute,bytes);
-                supplier.setFoto(photo.getOriginalFilename());
-                supplier.setFoto(Objects.requireNonNull(photo.getOriginalFilename()));
+    //         try {
+    //             byte[] bytes = photo.getBytes();
+    //             Path absoluteRoute = Paths.get(route + "//" + photo.getOriginalFilename());
+    //             Files.write(absoluteRoute,bytes);
+    //             supplier.setFoto(photo.getOriginalFilename());
+    //             supplier.setFoto(Objects.requireNonNull(photo.getOriginalFilename()));
 
-            }
-            catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            supplierService.createSupplier(supplier);
+    //         }
+    //         catch (IOException e) {
+    //             throw new RuntimeException(e);
+    //         }
+    //         supplierService.createSupplier(supplier);
 
-            flash.addFlashAttribute("success", "Uploaded successfully");
-        }
-        return "redirect:/";
-    }
+    //         flash.addFlashAttribute("success", "Uploaded successfully");
+    //     }
+    //     return "redirect:/";
+    // }
 
 
-    @GetMapping("/img")
-    public String form(Model model){
-        model.addAttribute("suppliers", new SupplierEntity());
-        return "form";
-    }
+    // @GetMapping("/img")
+    // public String form(Model model){
+    //     model.addAttribute("suppliers", new SupplierEntity());
+    //     return "form";
+    // }
 }

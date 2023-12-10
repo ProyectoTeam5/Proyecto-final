@@ -9,7 +9,7 @@ export async function getAllSuppliers() {
 }
 
 export const createNewSupplier = async (supplier) => {
-    await fetch(`http://localhost:8080/api/supplier/create`, {
+    await fetch('http://localhost:8080/api/supplier/create', {
         body: JSON.stringify(supplier),
         headers: {
             "Content-type": "application/json"
@@ -20,7 +20,7 @@ export const createNewSupplier = async (supplier) => {
 
 
 export const deleteSupplier = async (id) => {
-    await fetch(`http://localhost:8080/api/supplier/${id}`, {
+    await fetch('http://localhost:8080/api/supplier/${id}', {
         method: "DELETE"
     })
 };
